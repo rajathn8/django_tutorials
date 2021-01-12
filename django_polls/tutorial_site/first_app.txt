@@ -1,0 +1,164 @@
+
+Creating your First App
+
+	Inside your Django Project , You will be building Apps
+
+	Each application you write in Django consists of a Python package that follows a certain convention.
+
+	Django comes with a utility that automatically generates the basic directory structure of an app, so you can focus on writing code rather than creating directories.
+
+Q - Whats the Difference between a Project and an APP
+	
+	app is a application which does something - eg --> Pooling App
+	an app can be in multiple projects
+
+	Project is a collection of configuration and apps for a particular website
+	Project can have multiple apps
+
+	Django supports rapid development by plug in and play infrastructure
+
+
+include() 
+
+	function allows referencing other URLconfs.
+	Whenever Django encounters include(), it chops off whatever part of the URL matched up to that point and sends the remaining string to the included URLconf for further processing.
+
+	The idea behind include() is to make it easy to plug-and-play URLs.
+
+	You should always use include() when you include other URL patterns. 
+
+	admin.site.urls is the only exception to this.
+
+
+path()
+	 passed four arguments, 
+		 two required: route and view
+		 two optional: kwargs, and name.
+
+	ROUTE - route is a string that contains a URL pattern. 
+			When processing a request, Django starts at the first pattern in urlpatterns and makes its way down the list, comparing the requested URL against each pattern until it finds one that matches.
+
+    VIEW - When Django finds a matching pattern, it calls the specified view function with an HttpRequest object as the first argument and any “captured” values from the route as keyword arguments.
+
+
+
+Q2 - 
+	make sure that the database user provided in mysite/settings.py has “create database” privileges. This allows automatic creation of a test database which will be needed in a later tutorial.
+
+	If you’re using SQLite, you don’t need to create anything beforehand - the database file will be created automatically when it is needed.
+
+
+
+INSTALLED_APPS setting at the top of the file.
+	 That holds the names of all Django applications that are activated in this Django instance. 
+
+	 Apps can be used in multiple projects, and you can package and distribute them for use by others in their projects.
+
+
+INSTALLED_APPS contains the following apps, all of which come with Django:
+
+	django.contrib.admin – The admin site. 
+	django.contrib.auth – authentication framework
+	django.contrib.contenttypes – content type framework
+	django.contrib.sessions – session framework
+	django.contrib.messages – messaging framework.
+	django.contrib.staticfiles – static file management framework
+
+	These applications are included by default as a convenience for the common case.
+
+	Some of these applications make use of at least one database table
+	so we need to create the tables in the database before we can use them.
+	migrate and make migrations
+
+
+Migrate Command
+	
+	looks at the INSTALLED_APPS setting and creates any necessary database tables according to the database settings
+
+	it also looks at the migrations shipped with the app
+
+	the migrate command will only install apps in the installed apps
+
+	so whenever you join one app to an another app, essentiall you will have to make migrations for the app to have access to the DB of this project
+
+Models
+	
+	- your database layout, with additional metadata.
+
+	- It contains the essential fields and behaviors of the data you’re storing.
+
+	- Django Follows DRY principle ( DO not Repeat Yourself )
+
+	- The goal is to define your data model in one place and automatically derive things from it
+
+	- migrations are entirely derived from the models file
+
+	- django can roll through an update the DB Schema to match the current models
+
+
+each model is represented by a class that subclasses django.db.models.Model
+
+Each model has a number of class variables, each of which represents a database row in the model
+
+Each field is represented by an instance of a Field class
+
+Add the app by taking the app name from the apps.py file in the application folder and add it to the project folder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
